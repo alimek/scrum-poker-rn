@@ -13,7 +13,7 @@ export const AppNavigator = StackNavigator({
 const Navigator = ({ dispatch, nav }: { dispatch: Function, nav: Object }) =>
   <AppNavigator
     navigation={addNavigationHelpers({
-      dispatch: dispatch,
+      dispatch,
       state: nav,
     })}
   />;

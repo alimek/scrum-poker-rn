@@ -1,6 +1,7 @@
+// @flow
 import { AppNavigator } from '../containers/Navigator';
 
-const navReducer = (state, action) => {
+const navReducer = (state: Object, action: Function) => {
   const newState = AppNavigator.router.getStateForAction(action, state);
   return newState || state;
 };
