@@ -19,7 +19,7 @@ class HomePage extends Component {
     header: {
       visible: false,
     },
-  }
+  };
 
   constructor() {
     super();
@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 18,
     color: '#fff',
+    backgroundColor: 'transparent',
     fontWeight: '700',
     textShadowColor: '#000',
     textShadowOffset: { width: 2, height: 2 },
