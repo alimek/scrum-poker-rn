@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import ReactNative from 'react-native';
 import { Input, Button } from '../components';
 import * as variables from '../styles/common';
+import axios from 'axios'
 
 const {
   View,
@@ -59,7 +60,7 @@ class HomePage extends Component {
 
         <Button
           title="Go to GamePage"
-          onPress={this.state.name ? () => navigate('Game') : null}
+          onPress={() => axios.get('/games/58c7fdc7e27aa00800fb0197').then(r => console.error(r))}
           style={styles.button}
           textStyle={styles.buttonText}
         />
