@@ -1,9 +1,15 @@
 // @flow
 import { combineReducers } from 'redux';
-import navReducer from './navigator';
+import authNav from './authenticatedNavigator';
+import unAuthNav from './unauthenticatedNavigator';
+import user from './user';
+import game from './game';
 
 const rootReducer = combineReducers({
-  nav: navReducer,
+  authNav,
+  unAuthNav,
+  user,
+  game,
 });
 
 export default rootReducer;

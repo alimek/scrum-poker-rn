@@ -8,6 +8,7 @@
     "flow": "flow"
   },
   "dependencies": {
+    "axios": "^0.16.0",
     "flow-bin": "0.38.0",
     "react": "~15.4.1",
     "react-native": "0.42.0",
