@@ -11,6 +11,8 @@ export const AuthenticatedUser = StackNavigator({
 
 export const UnauthenticatedUser = StackNavigator({
   HomePage: { screen: HomePage },
+}, {
+  headerMode: 'screen',
 });
 
 const Navigator = ({ dispatch, unAuthNav, authNav, loggedIn }: { dispatch: Function, unAuthNav: Object, authNav: Object, loggedIn: Boolean }) => {
