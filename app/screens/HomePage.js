@@ -4,13 +4,14 @@ import React, { Component } from 'react';
 import ReactNative from 'react-native';
 import { Input, Button } from '../components';
 import * as variables from '../styles/common';
-import axios from 'axios'
+import axios from 'axios';
 
 const {
   View,
   Text,
   Image,
   StyleSheet,
+  KeyboardAvoidingView,
 } = ReactNative;
 
 class HomePage extends Component {
@@ -34,7 +35,7 @@ class HomePage extends Component {
 
   state: {
     name: null | string,
-  }
+  };
 
   props: HomepageProps;
 
@@ -44,27 +45,28 @@ class HomePage extends Component {
     const { navigation: { navigate } } = this.props;
 
     return (
-      <View style={styles.mainView}>
-        <Image source={background} style={styles.backgroundImage} />
-        <Image source={logo} style={styles.logoImage} />
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+        <Image source={background} style={styles.mainView}>
+          <Image source={logo} style={styles.logoImage}/>
 
-        <Text style={styles.text}>Planning Poker - let&apos;s plan your sprint</Text>
+          <Text style={styles.text}>Planning Poker - let&apos;s plan your sprint</Text>
 
-        <Input
-          underlineColorAndroid={'transparent'}
-          placeholder={'type your name'}
-          placeholderTextColor={'#d3d3d3'}
-          style={styles.input}
-          onChangeText={e => this.updateName(e)}
-        />
+          <Input
+            underlineColorAndroid={'transparent'}
+            placeholder={'type your name'}
+            placeholderTextColor={'#d3d3d3'}
+            style={styles.input}
+            onChangeText={e => this.updateName(e)}
+          />
 
-        <Button
-          title="Go to GamePage"
-          onPress={() => axios.get('/games/58c7fdc7e27aa00800fb0197').then(r => console.error(r))}
-          style={styles.button}
-          textStyle={styles.buttonText}
-        />
-      </View>
+          <Button
+            title="Go to GamePage"
+            onPress={() => axios.get('/games/58bec6d73a05e10800551958').then(r => console.error(r))}
+            style={styles.button}
+            textStyle={styles.buttonText}
+          />
+        </Image>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -76,7 +78,7 @@ type HomepageProps = {
 }
 
 const background = require('../assets/img/team.jpg');
-const logo = require('../assets/img/pgssoftware-logo-white-150px.png');
+const logo = require('../assets/img/pgssoftware-logo-white-300px.png');
 
 const inputHeight = 40;
 const inputWidth = 280;
@@ -84,6 +86,7 @@ const inputWidth = 280;
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
+    width: null,
     justifyContent: 'center',
     flexDirection: 'column',
   },
