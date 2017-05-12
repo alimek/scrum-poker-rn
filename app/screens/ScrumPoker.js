@@ -5,7 +5,7 @@ import axios from 'axios';
 import Navigator from './Navigator';
 import store from '../store';
 
-axios.defaults.baseURL = 'http://symfony.dev:8088/app_dev.php';
+axios.defaults.baseURL = 'http://10.0.2.2:8088/app_dev.php';
 
 const ScrumPoker = () => (
   <Provider store={store}>

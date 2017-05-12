@@ -28,10 +28,11 @@ const Navigator = ({ dispatch, unAuthNav, authNav, loggedIn }: { dispatch: Funct
         dispatch,
         state: unAuthNav,
       })}
-    />
+    />;
 };
 
 
 const mapStateToProps = state => ({ authNav: state.authNav, unAuthNav: state.unAuthNav, loggedIn: state.user.loggedIn });
 
 export default connect(mapStateToProps)(Navigator);
+// http://symfony.dev:8088/app_dev.php/_profiler/

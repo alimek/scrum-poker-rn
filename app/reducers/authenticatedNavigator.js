@@ -1,9 +1,20 @@
 // @flow
+import { NavigationActions } from 'react-navigation';
 import { AuthenticatedUser } from '../screens/Navigator';
+import { GAME_LOGIN } from '../actions/types';
 
 const authReducer = (state: Object, action: Function) => {
-  const newState = AuthenticatedUser.router.getStateForAction(action, state);
-  return newState || state;
+  switch (action.type) {
+    case GAME_LOGIN:
+      return AuthenticatedUser.router.getStateForAction(NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: 'Game' }),
+        ],
+      }), state);
+    default:
+      return AuthenticatedUser.router.getStateForAction(action, state) || state;
+  }
 };
 
 export default authReducer;

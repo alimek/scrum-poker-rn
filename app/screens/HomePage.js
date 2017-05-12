@@ -2,12 +2,19 @@
 /* eslint-disable no-use-before-define*/
 import React, { Component } from 'react';
 import ReactNative from 'react-native';
-import { Input, Button } from '../components';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as gameActions from '../actions/game';
+import * as userActions from '../actions/user';
+
+import {
+  Input,
+  Button,
+} from '../components';
 import * as variables from '../styles/common';
-import axios from 'axios';
 
 const {
-  View,
   Text,
   Image,
   StyleSheet,
@@ -22,51 +29,47 @@ class HomePage extends Component {
     },
   };
 
-  constructor() {
-    super();
-    this.state = {
-      name: null,
-    };
-
-    this.updateName = (name: string) => {
-      this.setState({ name });
-    };
-  }
-
-  state: {
-    name: null | string,
-  };
-
   props: HomepageProps;
 
-  updateName: (e: string) => void;
-
   render() {
-    const { navigation: { navigate } } = this.props;
+    const { navigation: { navigate },
+      actions,
+    } = this.props;
 
     return (
-      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
-        <Image source={background} style={styles.mainView}>
-          <Image source={logo} style={styles.logoImage}/>
+      <Image source={background} style={styles.mainView}>
+        <KeyboardAvoidingView behavior="padding" contentContainerStyle={{ flex: 1 }}>
 
-          <Text style={styles.text}>Planning Poker - let&apos;s plan your sprint</Text>
+          <Image source={logo} style={styles.logoImage} />
+
+          <Text style={styles.text}>Planning Pokers - let&apos;s plan your sprint</Text>
 
           <Input
             underlineColorAndroid={'transparent'}
-            placeholder={'type your name'}
+            placeholder={'Game id'}
             placeholderTextColor={'#d3d3d3'}
             style={styles.input}
-            onChangeText={e => this.updateName(e)}
+            onChangeText={actions.setGameId}
+          />
+
+          <Input
+            underlineColorAndroid={'transparent'}
+            placeholder={'Your nickname'}
+            placeholderTextColor={'#d3d3d3'}
+            style={styles.input}
+            onChangeText={actions.setUserName}
+
           />
 
           <Button
             title="Go to GamePage"
-            onPress={() => axios.get('/games/58bec6d73a05e10800551958').then(r => console.error(r))}
+            onPress={actions.gameLogin}
             style={styles.button}
             textStyle={styles.buttonText}
           />
-        </Image>
-      </KeyboardAvoidingView>
+
+        </KeyboardAvoidingView>
+      </Image>
     );
   }
 }
@@ -99,8 +102,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    marginBottom: 10,
-    marginTop: 10,
+    marginBottom: 5,
+    marginTop: 5,
     backgroundColor: '#fff',
     width: inputWidth,
     alignSelf: 'center',
@@ -120,7 +123,8 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 2, height: 2 },
   },
   button: {
-    backgroundColor: variables.defaultBlue,
+    marginTop: 5,
+    backgroundColor: variables.brandPrimary,
     width: inputWidth,
     alignSelf: 'center',
     height: inputHeight,
@@ -135,4 +139,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomePage;
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ ...gameActions, ...userActions }, dispatch),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(HomePage);
