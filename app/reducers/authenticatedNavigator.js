@@ -1,7 +1,7 @@
 // @flow
 import { NavigationActions } from 'react-navigation';
-import { AuthenticatedUser } from '../screens/Navigator';
-import { GAME_LOGIN } from '../actions/types';
+import { AuthenticatedUser } from '../screens/Navigator/Navigator';
+import { GAME_LOGIN } from '../actions/action_types';
 
 const authReducer = (state: Object, action: Function) => {
   switch (action.type) {

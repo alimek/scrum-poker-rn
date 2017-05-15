@@ -1,25 +1,22 @@
 // @flow
-/* eslint-disable no-use-before-define*/
 import React, { Component } from 'react';
 import ReactNative from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as gameActions from '../actions/game';
-import * as userActions from '../actions/user';
-
-import {
-  Input,
-  Button,
-} from '../components';
-import * as variables from '../styles/common';
+import { Input, Button } from '../../components';
+import styles from './HomePage-styles';
+import * as gameActions from '../../actions/game';
+import * as userActions from '../../actions/user';
+import type { HomePageProps } from './HomePage-types';
 
 const {
   Text,
   Image,
-  StyleSheet,
   KeyboardAvoidingView,
 } = ReactNative;
+const background = require('../../assets/img/team.jpg');
+const logo = require('../../assets/img/pgssoftware-logo-white-300px.png');
 
 class HomePage extends Component {
 
@@ -29,7 +26,7 @@ class HomePage extends Component {
     },
   };
 
-  props: HomepageProps;
+  props: HomePageProps;
 
   render() {
     const { navigation: { navigate },
@@ -58,7 +55,6 @@ class HomePage extends Component {
             placeholderTextColor={'#d3d3d3'}
             style={styles.input}
             onChangeText={actions.setUserName}
-
           />
 
           <Button
@@ -73,71 +69,6 @@ class HomePage extends Component {
     );
   }
 }
-
-type HomepageProps = {
-  navigation: {
-    navigate: Function,
-  }
-}
-
-const background = require('../assets/img/team.jpg');
-const logo = require('../assets/img/pgssoftware-logo-white-300px.png');
-
-const inputHeight = 40;
-const inputWidth = 280;
-
-const styles = StyleSheet.create({
-  mainView: {
-    flex: 1,
-    width: null,
-    justifyContent: 'center',
-    flexDirection: 'column',
-  },
-  backgroundImage: {
-    position: 'absolute',
-  },
-  logoImage: {
-    alignSelf: 'center',
-    width: 250,
-    marginBottom: 20,
-  },
-  input: {
-    marginBottom: 5,
-    marginTop: 5,
-    backgroundColor: '#fff',
-    width: inputWidth,
-    alignSelf: 'center',
-    textAlign: 'center',
-    height: inputHeight,
-    borderColor: variables.pgsOrange,
-    borderWidth: 2,
-    borderRadius: 1,
-  },
-  text: {
-    alignSelf: 'center',
-    fontSize: 18,
-    color: '#fff',
-    backgroundColor: 'transparent',
-    fontWeight: '700',
-    textShadowColor: '#000',
-    textShadowOffset: { width: 2, height: 2 },
-  },
-  button: {
-    marginTop: 5,
-    backgroundColor: variables.brandPrimary,
-    width: inputWidth,
-    alignSelf: 'center',
-    height: inputHeight,
-    justifyContent: 'center',
-    borderRadius: 1,
-    borderColor: '#0C42FD',
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: '#fff',
-    fontWeight: '600',
-  },
-});
 
 const mapStateToProps = state => state;
 

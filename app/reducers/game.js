@@ -2,8 +2,7 @@
 
 import {
   GAME_SET_ID,
-  GAME_LOGIN,
-} from '../actions/types';
+} from '../actions/action_types';
 
 const defaultState = {
   name: null,
@@ -16,11 +15,6 @@ const defaultState = {
 const reducer = (state: Object = defaultState, action: Function) => {
   switch (action.type) {
     case GAME_SET_ID:
-      return {
-        ...state,
-        id: action.id,
-      };
-    case GAME_LOGIN:
       return {
         ...state,
         id: action.id,
