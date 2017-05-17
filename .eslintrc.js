@@ -2,7 +2,7 @@ module.exports = {
   "extends": "airbnb",
   "rules": {
     "react/jsx-filename-extension": [1, {"extensions": [".js"]}],
-    "linebreak-style": ["error", "windows"]
+    "linebreak-style": ["error", "unix"]
   },
   "parser": "babel-eslint",
   "plugins": [

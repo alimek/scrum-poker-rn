@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga/effects';
-import { logIntoGame } from './gameSagas';
+import { handleGameLogin } from './gameSagas';
 
 export default function* rootSaga() {
-  yield takeEvery('GAME_LOG_IN', logIntoGame);
+  yield takeEvery('GAME_LOGIN_REQUESTED', handleGameLogin);
 }

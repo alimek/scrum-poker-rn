@@ -19,6 +19,11 @@ const reducer = (state: Object = defaultState, action: Function) => {
         ...state,
         id: action.id,
       };
+    case 'GAME_LOGIN_SUCCEEDED':
+      return {
+        ...state,
+        ...action.data,
+      };
     default:
       return state;
   }

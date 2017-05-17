@@ -12,7 +12,7 @@ const composeEnhancers =
     : compose;
 /* eslint-enable */
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState: Object) {
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(
     rootReducer,
@@ -21,13 +21,6 @@ export default function configureStore(initialState) {
       applyMiddleware(sagaMiddleware),
     ),
   );
-
-  if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers').default; // eslint-disable-line global-require
-      store.replaceReducer(nextRootReducer);
-    });
-  }
 
   store.runSaga = sagaMiddleware.run(rootSaga);
   store.close = () => store.dispatch(END);

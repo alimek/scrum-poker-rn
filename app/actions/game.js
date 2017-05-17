@@ -1,7 +1,7 @@
 import { GAME_LOG_IN, GAME_SET_ID } from './action_types';
 
 export const gameLogin = id => ({
-  type: GAME_LOG_IN,
+  type: 'GAME_LOGIN_REQUESTED',
   id,
 });
 
