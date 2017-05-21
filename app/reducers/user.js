@@ -1,5 +1,7 @@
 // @flow
 
+import { GAME_LOGIN_SUCCEEDED } from '../actions/game';
+
 const defaultState = {
   guid: null,
   name: null,
@@ -10,7 +12,15 @@ const defaultState = {
 };
 
 const reducer = (state: Object = defaultState, action: Function) => {
-  return state;
+  switch (action.type) {
+    case GAME_LOGIN_SUCCEEDED:
+      return {
+        ...state,
+        loggedIn: true,
+      };
+    default:
+      return state;
+  }
 };
 
 export default reducer;

@@ -1,8 +1,8 @@
 // @flow
 
 import {
-  GAME_SET_ID,
-} from '../actions/action_types';
+  GAME_SET_ID, GAME_LOGIN_SUCCEEDED,
+} from '../actions/game';
 
 const defaultState = {
   name: null,
@@ -19,7 +19,7 @@ const reducer = (state: Object = defaultState, action: Function) => {
         ...state,
         id: action.id,
       };
-    case 'GAME_LOGIN_SUCCEEDED':
+    case GAME_LOGIN_SUCCEEDED:
       return {
         ...state,
         ...action.data,

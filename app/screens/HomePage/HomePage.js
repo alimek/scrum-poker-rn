@@ -59,7 +59,7 @@ class HomePage extends Component {
 
           <Button
             title="Go to GamePage"
-            onPress={actions.gameLogin}
+            onPress={actions.gameEnter}
             style={styles.button}
             textStyle={styles.buttonText}
           />
