@@ -9,6 +9,7 @@ module.exports = {
     "flowtype"
   ],
   "globals": {
-    "window": true
+    "window": true,
+    "requestAnimationFrame": true,
   }
 };
