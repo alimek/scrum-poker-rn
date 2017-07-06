@@ -2,21 +2,21 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import type { ButtonProps } from './Button-types';
-import button from './Button-styles';
+import styles from './Button-styles';
 
-const Button = ({ disabled, style, ...props }: ButtonProps) => {
-  const styles = [style];
+const Button = ({ disabled, style, children, ...props }: ButtonProps) => {
+  const buttonStyles = [styles.base, style];
 
-  if (disabled === true) styles.push(button.disabled);
+  if (disabled === true) buttonStyles.push(styles.disabled);
 
   return (
     <TouchableOpacity
       {...props}
-      style={styles}
+      style={buttonStyles}
       activeOpacity={0.9}
       disabled={disabled}
     >
-      <Text style={props.textStyle}>{props.title}</Text>
+      <Text>{children}</Text>
     </TouchableOpacity>
   );
 };

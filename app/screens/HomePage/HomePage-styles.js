@@ -1,59 +1,31 @@
-import ReactNative from 'react-native';
-import * as variables from '../../styles/common';
+import { StyleSheet, Dimensions } from 'react-native';
+import { PGS_ORANGE, SPACING_REGULAR, SPACING_SMALL } from '../../styles/common';
 
-const { StyleSheet } = ReactNative;
-const inputHeight = 40;
-const inputWidth = 280;
+const window = Dimensions.get('window');
+export const IMAGE_HEIGHT = window.width / 2;
+export const IMAGE_HEIGHT_SMALL = window.width / 5;
+export const HEADER_SIZE = 28;
+export const HEADER_SIZE_SMALL = 14;
 
 export default StyleSheet.create({
-  mainView: {
+  container: {
+    backgroundColor: PGS_ORANGE,
     flex: 1,
-    width: null,
+    alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'column',
+    paddingLeft: SPACING_REGULAR,
+    paddingRight: SPACING_REGULAR,
   },
-  backgroundImage: {
-    position: 'absolute',
-  },
-  logoImage: {
-    alignSelf: 'center',
-    width: 250,
-    marginBottom: 20,
-  },
-  input: {
-    marginBottom: 5,
-    marginTop: 5,
-    backgroundColor: '#fff',
-    width: inputWidth,
-    alignSelf: 'center',
-    textAlign: 'center',
-    height: inputHeight,
-    borderColor: variables.pgsOrange,
-    borderWidth: 2,
-    borderRadius: 1,
+  logo: {
+    height: IMAGE_HEIGHT,
+    resizeMode: 'contain',
   },
   text: {
-    alignSelf: 'center',
-    fontSize: 18,
     color: '#fff',
-    backgroundColor: 'transparent',
-    fontWeight: '700',
-    textShadowColor: '#000',
-    textShadowOffset: { width: 2, height: 2 },
+    marginBottom: -SPACING_SMALL,
   },
-  button: {
-    marginTop: 5,
-    backgroundColor: variables.brandPrimary,
-    width: inputWidth,
-    alignSelf: 'center',
-    height: inputHeight,
-    justifyContent: 'center',
-    borderRadius: 1,
-    borderColor: '#0C42FD',
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: '#fff',
-    fontWeight: '600',
+  formContainer: {
+    flex: 1,
+    flexDirection: 'row',
   },
 });
