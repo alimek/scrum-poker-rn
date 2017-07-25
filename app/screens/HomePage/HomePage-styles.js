@@ -22,7 +22,7 @@ export default StyleSheet.create({
   },
   text: {
     color: '#fff',
-    marginBottom: -SPACING_SMALL,
+    marginBottom: SPACING_SMALL,
   },
   formContainer: {
     flex: 1,

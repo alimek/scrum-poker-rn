@@ -18,19 +18,20 @@ export const UserUnauthenticated = StackNavigator({
   headerMode: 'screen',
 });
 
-const Navigator = ({ dispatch, authenticated, unauthenticated, loggedIn }: NavigatorProps) =>
-  (loggedIn
-    ? <UserAuthenticated
+const Navigator = ({ dispatch, authenticated, unauthenticated, loggedIn }: NavigatorProps) => (
+  loggedIn ?
+    <UserAuthenticated
       navigation={addNavigationHelpers({
         dispatch,
         state: authenticated,
       })}
-    />
-    : <UserUnauthenticated
+    /> :
+    <UserUnauthenticated
       navigation={addNavigationHelpers({
         dispatch,
         state: unauthenticated,
       })}
-    />);
+    />
+);
 
 export default connect(navigatorSelector)(Navigator);

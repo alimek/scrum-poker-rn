@@ -72,6 +72,11 @@ class HomePage extends Component {
     ]).start();
   };
 
+  handleSubmit = (validFormData) => {
+    const { gameEnter } = this.props.actions;
+    return gameEnter(validFormData.gameId);
+  }
+
   render() {
     const {
       navigation: { navigate },
@@ -92,6 +97,7 @@ class HomePage extends Component {
 
         <HomePageForm
           containerStyle={styles.formContainer}
+          onSubmit={this.handleSubmit}
         />
       </KeyboardAvoidingView>
     );

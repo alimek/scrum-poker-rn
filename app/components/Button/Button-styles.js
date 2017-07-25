@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BRAND_PRIMARY_DISABLED, PGS_ORANGE } from '../../styles/common';
+import { BRAND_PRIMARY_DISABLED, PGS_ORANGE, FONT_BIG } from '../../styles/common';
 
 export const RADIUS = 10;
 
@@ -27,7 +27,7 @@ export default StyleSheet.create({
 
   text: {
     color: PGS_ORANGE,
-    fontSize: 22,
+    fontSize: FONT_BIG,
     fontWeight: '700',
   },
 });

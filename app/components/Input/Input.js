@@ -1,9 +1,9 @@
 // @flow
 import React, { Component } from 'react';
-import { TextInput, View, Animated } from 'react-native';
+import { TextInput, View, Animated, Text } from 'react-native';
 
 import { createTiming } from '../../utils/animations';
-import styles, { PLACEHOLDER_ACTIVE, PLACEHOLDER_INACTIVE } from './Input-styles';
+import styles from './Input-styles';
 
 /**
  * to be wrapped with redux-form Field component
@@ -12,9 +12,8 @@ class Input extends Component {
   constructor(props) {
     super(props);
 
-    this.placeholderPosition = new Animated.Value(35);
-    this.placeholderSize = new Animated.Value(PLACEHOLDER_INACTIVE);
-    this.borderWidth = new Animated.Value(0);
+    this.textAnimation = new Animated.Value(0);
+    this.borderAnimation = new Animated.Value(0);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,25 +25,21 @@ class Input extends Component {
 
   onInputFocus(active: Boolean) {
     Animated.parallel([
-      createTiming(Animated, this.placeholderPosition, 10),
-      createTiming(Animated, this.placeholderSize, PLACEHOLDER_ACTIVE),
-      createTiming(Animated, this.borderWidth, active ? 100 : 0, active ? 600 : 300),
+      createTiming(Animated, this.textAnimation, 1),
+      createTiming(Animated, this.borderAnimation, active ? 100 : 0, active ? 600 : 300),
     ]).start();
   }
 
   onInputBlur(active: Boolean) {
     Animated.parallel([
-      createTiming(Animated, this.placeholderPosition, 35),
-      createTiming(Animated, this.placeholderSize, PLACEHOLDER_INACTIVE),
-      createTiming(Animated, this.borderWidth, active ? 100 : 0, active ? 600 : 300),
+      createTiming(Animated, this.textAnimation, 0),
+      createTiming(Animated, this.borderAnimation, active ? 100 : 0, active ? 600 : 300),
     ]).start();
   }
 
-  placeholderPosition: Object;
+  textAnimation: Object;
 
-  borderWidth: Object;
-
-  placeholderSize: Object;
+  borderAnimation: Object;
 
   render() {
     const {
@@ -57,15 +52,33 @@ class Input extends Component {
     const placeholderAnimation = [
       styles.placeholder,
       {
-        top: this.placeholderPosition,
-        fontSize: this.placeholderSize,
+        transform: [
+          {
+            translateY: this.textAnimation.interpolate({
+              inputRange: [0, 1],
+              outputRange: [10, -10],
+            }),
+          },
+          {
+            translateX: this.textAnimation.interpolate({
+              inputRange: [0, 1],
+              outputRange: [5, -10],
+            }),
+          },
+          {
+            scale: this.textAnimation.interpolate({
+              inputRange: [0, 1],
+              outputRange: [1, 0.6],
+            }),
+          },
+        ],
       },
     ];
 
     const borderAnimation = [
       styles.borderInactive,
       {
-        width: this.borderWidth.interpolate({
+        width: this.borderAnimation.interpolate({
           inputRange: [0, 100],
           outputRange: ['100%', '0%'],
         }),
@@ -77,6 +90,10 @@ class Input extends Component {
         <Animated.Text style={placeholderAnimation}>
           {placeholder.toUpperCase()}
         </Animated.Text>
+
+        {meta.touched && meta.error &&
+          <Text style={styles.textError}>{meta.error}</Text>
+        }
 
         <TextInput
           style={styles.text}

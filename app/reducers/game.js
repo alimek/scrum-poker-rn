@@ -20,6 +20,7 @@ const reducer = (state: Object = defaultState, action: Function) => {
         id: action.id,
       };
     case GAME_LOGIN_SUCCEEDED:
+      console.log(action);
       return {
         ...state,
         ...action.data,

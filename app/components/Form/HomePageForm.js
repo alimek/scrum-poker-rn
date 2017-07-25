@@ -9,9 +9,11 @@ import styles from './HomePageForm-styles';
 const HomePageForm = ({
   containerStyle,
   onSubmit,
+  handleSubmit,
 }: {
   containerStyle: Object,
   onSubmit: Function,
+  handleSubmit: Function, // redux form built in method
 }) =>
   <View style={containerStyle}>
     <View style={styles.formInner}>
@@ -21,7 +23,7 @@ const HomePageForm = ({
         placeholder={'Game Id'}
         validate={[
           val => (val ? undefined : 'gameId field is required'),
-          val => (val && val.length >= 8 ? undefined : 'gameID must be at least 8 characters long'),
+          val => (val && val.length === 24 ? undefined : 'gameID is made up of 24 characters'),
         ]}
       />
       <Field
@@ -30,11 +32,11 @@ const HomePageForm = ({
         placeholder={'User Name'}
         validate={[
           val => (val ? undefined : 'User name field is required'),
-          val => (val && val.length >= 8 ? undefined : 'User name must be at least 8 characters long'),
+          val => (val && val.length >= 3 ? undefined : 'User name must be at least 3 characters long'),
         ]}
       />
       <RippleButton
-        onSubmit={onSubmit}
+        onPress={handleSubmit(onSubmit)}
         style={styles.buttonContainer}
       >
         Enter

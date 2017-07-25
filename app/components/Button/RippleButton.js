@@ -8,7 +8,7 @@ export default class Ripple extends PureComponent {
     ...TouchableWithoutFeedback.defaultProps,
     rippleColor: 'rgb(0, 0, 0)',
     rippleOpacity: 0.30,
-    rippleDuration: 1200,
+    rippleDuration: 600,
     rippleSize: 0,
     rippleContainerBorderRadius: 0,
     rippleCentered: false,
@@ -23,12 +23,6 @@ export default class Ripple extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.onLayout = this.onLayout.bind(this);
-    this.onPress = this.onPress.bind(this);
-    this.onPressIn = this.onPressIn.bind(this);
-    this.onPressOut = this.onPressOut.bind(this);
-    this.onLongPress = this.onLongPress.bind(this);
-    this.renderRipple = this.renderRipple.bind(this);
     this.unique = 0;
     this.mounted = false;
 
@@ -47,53 +41,20 @@ export default class Ripple extends PureComponent {
     this.mounted = false;
   }
 
-  onLayout(event) {
+  onLayout = (event) => {
     const { width, height } = event.nativeEvent.layout;
-    const { onLayout } = this.props;
-
-    if (typeof onLayout === 'function') {
-      onLayout(event);
-    }
-
     this.setState({ width, height });
   }
 
-  onPress(event) {
+  onPress = (event) => {
     const { ripples } = this.state;
-    const { onPress, rippleSequential } = this.props;
+    const { onPress } = this.props;
 
-    if (!rippleSequential || !ripples.length) {
+    if (!ripples.length) {
       if (typeof onPress === 'function') {
-        requestAnimationFrame(() => onPress(event));
+        requestAnimationFrame(onPress);
       }
-
       this.startRipple(event);
-    }
-  }
-
-  onLongPress(event) {
-    const { onLongPress } = this.props;
-
-    if (typeof onLongPress === 'function') {
-      requestAnimationFrame(() => onLongPress(event));
-    }
-
-    this.startRipple(event);
-  }
-
-  onPressIn(event) {
-    const { onPressIn } = this.props;
-
-    if (typeof onPressIn === 'function') {
-      onPressIn(event);
-    }
-  }
-
-  onPressOut(event) {
-    const { onPressOut } = this.props;
-
-    if (typeof onPressOut === 'function') {
-      onPressOut(event);
     }
   }
 
@@ -107,11 +68,7 @@ export default class Ripple extends PureComponent {
     rippleSequential: bool,
     disabled: bool,
     children: Object,
-    onLayout: Function,
     onPress: Function,
-    onPressIn: Function,
-    onPressOut: Function,
-    onLongPress: Function,
   }
 
   startRipple(event) {
@@ -156,7 +113,7 @@ export default class Ripple extends PureComponent {
     this.setState(({ ripples }) => ({ ripples: ripples.concat(ripple) }));
   }
 
-  renderRipple({ unique, progress, locationX, locationY, R }) {
+  renderRipple = ({ unique, progress, locationX, locationY, R }) => {
     const { rippleColor, rippleOpacity } = this.props;
 
     const rippleStyle = {
@@ -184,7 +141,7 @@ export default class Ripple extends PureComponent {
 
   render() {
     const { ripples } = this.state;
-    const { onPress, onPressIn, onPressOut, onLongPress, onLayout } = this;
+    const { onPress, onLayout } = this;
     const {
       disabled,
       children,
@@ -195,9 +152,6 @@ export default class Ripple extends PureComponent {
     const touchableProps = {
       disabled,
       onPress,
-      onPressIn,
-      onPressOut,
-      onLongPress,
       onLayout,
     };
 

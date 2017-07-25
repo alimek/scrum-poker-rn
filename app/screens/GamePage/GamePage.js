@@ -9,7 +9,7 @@ const {
 
 const GamePage = () => (
   <View>
-    <Text>GamePage</Text>
+    <Text>Successfully logged in, welcome to Game page</Text>
   </View>
 );
 

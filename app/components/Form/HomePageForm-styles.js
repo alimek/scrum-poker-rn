@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { SPACING_REGULAR, SPACING_BIG } from '../../styles/common';
+import { SPACING_REGULAR } from '../../styles/common';
 
 export default StyleSheet.create({
   formInner: {
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#E0E0E0',
     minHeight: 56,
-    marginTop: SPACING_BIG,
+    marginTop: SPACING_REGULAR,
     borderRadius: 2,
     elevation: 2,
     shadowRadius: 2,

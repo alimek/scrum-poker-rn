@@ -1,18 +1,16 @@
 import { StyleSheet } from 'react-native';
 
-import { PGS_ORANGE_LIGHT, GRAY_LIGHT, SPACING_SMALL } from '../../styles/common';
-
-export const PLACEHOLDER_ACTIVE = 10;
-export const PLACEHOLDER_INACTIVE = 18;
+import { PGS_ORANGE_LIGHT, GRAY_LIGHT, FONT_REGULAR } from '../../styles/common';
 
 export default StyleSheet.create({
   inputContainer: {
     position: 'relative',
     height: 50,
-    marginBottom: SPACING_SMALL,
+    marginBottom: 5,
   },
   placeholder: {
-    left: 5,
+    position: 'absolute',
+    fontSize: FONT_REGULAR,
     color: PGS_ORANGE_LIGHT,
   },
   placeholderColored: {
@@ -20,11 +18,11 @@ export default StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: PLACEHOLDER_INACTIVE,
-    marginBottom: -SPACING_SMALL,
+    fontSize: FONT_REGULAR,
   },
   floatingBorderContainer: {
     flexDirection: 'row',
+    marginTop: -10,
   },
   borderInactive: {
     height: 1,
@@ -35,5 +33,12 @@ export default StyleSheet.create({
     height: 1,
     flex: 1,
     backgroundColor: GRAY_LIGHT,
+  },
+  textError: {
+    color: 'red',
+    position: 'absolute',
+    right: 0,
+    top: -5,
+    fontSize: 10,
   },
 });
