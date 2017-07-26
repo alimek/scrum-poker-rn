@@ -1,7 +1,7 @@
 // @flow
-
+import { normalize, schema } from 'normalizr';
 import {
-  GAME_SET_ID, GAME_LOGIN_SUCCEEDED,
+  GAME_LOGIN_SUCCEEDED,
 } from '../actions/game';
 
 const defaultState = {
@@ -14,13 +14,8 @@ const defaultState = {
 
 const reducer = (state: Object = defaultState, action: Function) => {
   switch (action.type) {
-    case GAME_SET_ID:
-      return {
-        ...state,
-        id: action.id,
-      };
     case GAME_LOGIN_SUCCEEDED:
-      console.log(action);
+      console.log(action)
       return {
         ...state,
         ...action.data,

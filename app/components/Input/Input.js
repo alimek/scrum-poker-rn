@@ -4,19 +4,14 @@ import { TextInput, View, Animated, Text } from 'react-native';
 
 import { createTiming } from '../../utils/animations';
 import styles from './Input-styles';
+import type { InputProps } from './Input-types';
 
 /**
  * to be wrapped with redux-form Field component
 */
 class Input extends Component {
-  constructor(props) {
-    super(props);
 
-    this.textAnimation = new Animated.Value(0);
-    this.borderAnimation = new Animated.Value(0);
-  }
-
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: InputProps) {
     const { active } = nextProps.meta;
     const { value } = nextProps.input;
 
@@ -37,6 +32,12 @@ class Input extends Component {
     ]).start();
   }
 
+  props: InputProps;
+
+  textAnimation = new Animated.Value(0);
+
+  borderAnimation = new Animated.Value(0);
+
   textAnimation: Object;
 
   borderAnimation: Object;
@@ -46,7 +47,7 @@ class Input extends Component {
       meta,
       input,
       placeholder,
-      ...inputProps,
+      ...inputProps
     } = this.props;
 
     const placeholderAnimation = [

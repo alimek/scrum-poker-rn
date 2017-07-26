@@ -2,14 +2,18 @@
 import React, { Component } from 'react';
 import { Animated, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
 import { HomePageForm } from '../../components';
-import styles, { IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL, HEADER_SIZE, HEADER_SIZE_SMALL } from './HomePage-styles';
 import { createTiming } from '../../utils/animations';
+import { gameEnter } from '../../actions/game';
+
+import styles, {
+  IMAGE_HEIGHT,
+  IMAGE_HEIGHT_SMALL,
+  HEADER_SIZE,
+  HEADER_SIZE_SMALL,
+} from './HomePage-styles';
 import { SPACING_REGULAR, SPACING_BIG } from '../../styles/common';
-import * as gameActions from '../../actions/game';
-import * as userActions from '../../actions/user';
+
 import type { HomePageProps } from './HomePage-types';
 
 const logo = require('../../assets/img/pgssoftware-logo-white-300px.png');
@@ -22,14 +26,6 @@ class HomePage extends Component {
     },
   };
 
-  constructor(props) {
-    super(props);
-
-    this.imageHeight = new Animated.Value(IMAGE_HEIGHT);
-    this.textSize = new Animated.Value(HEADER_SIZE);
-    this.textMargin = new Animated.Value(-SPACING_BIG);
-  }
-
   componentWillMount() {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow);
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide);
@@ -39,6 +35,12 @@ class HomePage extends Component {
     this.keyboardDidShowListener.remove();
     this.keyboardDidHideListener.remove();
   }
+
+  imageHeight = new Animated.Value(IMAGE_HEIGHT);
+
+  textSize = new Animated.Value(HEADER_SIZE);
+
+  textMargin = new Animated.Value(-SPACING_BIG);
 
   props: HomePageProps;
 
@@ -73,16 +75,11 @@ class HomePage extends Component {
   };
 
   handleSubmit = (validFormData) => {
-    const { gameEnter } = this.props.actions;
-    return gameEnter(validFormData.gameId);
+    const { submitForm } = this.props;
+    return submitForm(validFormData);
   }
 
   render() {
-    const {
-      navigation: { navigate },
-      actions,
-    } = this.props;
-
     return (
       <KeyboardAvoidingView
         style={styles.container}
@@ -104,13 +101,11 @@ class HomePage extends Component {
   }
 }
 
-const mapStateToProps = state => state;
-
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ ...gameActions, ...userActions }, dispatch),
+  submitForm: formData => dispatch(gameEnter(formData)),
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(HomePage);
