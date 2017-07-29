@@ -1,28 +1,40 @@
 // @flow
-import { normalize, schema } from 'normalizr';
-import {
-  GAME_LOGIN_SUCCEEDED,
-} from '../actions/game';
+import { normalize } from 'normalizr';
+import { playerSchema, taskSchema } from './schemas';
+import createReducer from './reducer-utils';
 
 const defaultState = {
-  name: null,
   id: null,
+  name: null,
+  status: null,
+  current_task_id: null,
   tasks: [],
   players: [],
-  status: null,
 };
 
-const reducer = (state: Object = defaultState, action: Function) => {
-  switch (action.type) {
-    case GAME_LOGIN_SUCCEEDED:
-      console.log(action)
-      return {
-        ...state,
-        ...action.data,
-      };
-    default:
-      return state;
-  }
+const gameLoginSucceeded = (state, action) => {
+  const {
+    id,
+    name,
+    status,
+    current_task_id,
+    tasks,
+    players,
+  } = action.payload;
+
+  return {
+    ...state,
+    id,
+    name,
+    status,
+    current_task_id,
+    tasks: normalize(tasks, taskSchema),
+    players: normalize(players, playerSchema),
+  };
 };
 
-export default reducer;
+const gameReducer = createReducer(defaultState, {
+  GAME_LOGIN_SUCCEEDED: gameLoginSucceeded,
+});
+
+export default gameReducer;
