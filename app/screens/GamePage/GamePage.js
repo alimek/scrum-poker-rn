@@ -1,20 +1,31 @@
 // @flow
-import React from 'react';
-import ReactNative from 'react-native';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
-const {
-  View,
-  Text,
-} = ReactNative;
+import { gameResultSelector } from '../../selectors/gameSelectors';
 
-const GamePage = () => (
-  <View>
-    <Text>Successfully logged in, welcome to Game page</Text>
-  </View>
-);
+import type { GamePageProps } from './GamePage-types';
 
-GamePage.navigationOptions = {
-  title: 'Game Page',
-};
+class GamePage extends Component {
 
-export default GamePage;
+  static navigationOptions = {
+    header: {
+      visible: false,
+    },
+  };
+
+  props: GamePageProps;
+
+  render() {
+    return (
+      <View>
+        <Text>{this.props.name}</Text>
+      </View>
+    );
+  }
+}
+
+export default connect(
+  gameResultSelector,
+)(GamePage);
