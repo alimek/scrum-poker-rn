@@ -1,5 +1,10 @@
 import { schema } from 'normalizr';
 
-export const playerSchema = new schema.Entity('players');
-export const taskSchema = new schema.Entity('tasks');
+const player = new schema.Entity('players');
 
+const task = new schema.Entity('tasks');
+
+export const gameSchema = {
+  players: [player],
+  tasks: [task],
+};
