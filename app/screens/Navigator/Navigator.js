@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StackNavigator, addNavigationHelpers } from 'react-navigation';
+
 import HomePage from '../HomePage/HomePage';
 import GamePage from '../GamePage/GamePage';
 import navigatorSelector from '../../selectors/navigatorSelectors';
@@ -9,22 +10,29 @@ import navigatorSelector from '../../selectors/navigatorSelectors';
 import type { NavigatorProps } from './Navigator-types';
 
 export const UserAuthenticated = StackNavigator({
-  Game: { screen: GamePage },
-});
+  Game: { screen: GamePage } },
+  { headerMode: 'screen' },
+);
 
 export const UserUnauthenticated = StackNavigator({
-  HomePage: { screen: HomePage },
-}, {
-  headerMode: 'screen',
-});
+  HomePage: { screen: HomePage } },
+  { headerMode: 'screen' },
+);
 
-const Navigator = ({ dispatch, authenticated, unauthenticated, loggedIn }: NavigatorProps) => (
+const Navigator = ({
+  dispatch,
+  authenticated,
+  unauthenticated,
+  loggedIn,
+  game,
+}: NavigatorProps) => (
   loggedIn ?
     <UserAuthenticated
       navigation={addNavigationHelpers({
         dispatch,
         state: authenticated,
       })}
+      screenProps={game}
     /> :
     <UserUnauthenticated
       navigation={addNavigationHelpers({

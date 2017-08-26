@@ -2,9 +2,12 @@
 import React, { Component } from 'react';
 import { Animated, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
-import { HomePageForm } from '../../components';
+import { createSelector } from 'reselect';
+
+import { HomePageForm, Warning } from '../../components';
 import { createTiming } from '../../utils/animations';
 import { gameEnter } from '../../actions/game';
+import { hasLoginErrorSelector } from '../../selectors/userSelectors';
 
 import styles, {
   IMAGE_HEIGHT,
@@ -96,6 +99,9 @@ class HomePage extends Component {
           containerStyle={styles.formContainer}
           onSubmit={this.handleSubmit}
         />
+        {this.props.loginError &&
+          <Warning>Login error</Warning>
+        }
       </KeyboardAvoidingView>
     );
   }
@@ -105,7 +111,14 @@ const mapDispatchToProps = dispatch => ({
   submitForm: formData => dispatch(gameEnter(formData)),
 });
 
+const selector = createSelector(
+  hasLoginErrorSelector,
+  (loginError) => ({
+    loginError,
+  }),
+);
+
 export default connect(
-  null,
+  selector,
   mapDispatchToProps,
 )(HomePage);

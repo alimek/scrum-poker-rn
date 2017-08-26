@@ -4,4 +4,5 @@ export type HomePageProps = {
     navigate: Function,
   },
   submitForm: Function,
+  loginError: bool,
 }

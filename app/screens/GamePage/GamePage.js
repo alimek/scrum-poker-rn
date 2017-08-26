@@ -1,31 +1,21 @@
 // @flow
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { connect } from 'react-redux';
+import { DrawerNavigator } from 'react-navigation';
 
-import { gameResultSelector } from '../../selectors/gameSelectors';
-
+import styles from './GamePage-styles';
 import type { GamePageProps } from './GamePage-types';
 
 class GamePage extends Component {
-
-  static navigationOptions = {
-    header: {
-      visible: false,
-    },
-  };
-
-  props: GamePageProps;
-
   render() {
+    console.log(this.props)
     return (
-      <View>
-        <Text>{this.props.name}</Text>
-      </View>
+      <Text>GamePage</Text>
     );
   }
 }
 
-export default connect(
-  gameResultSelector,
-)(GamePage);
+
+export default DrawerNavigator({
+  Main: { screen: GamePage },
+});

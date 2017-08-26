@@ -3,6 +3,8 @@ import React, { PureComponent } from 'react';
 import { View, Text, Animated, Easing, TouchableWithoutFeedback } from 'react-native';
 import styles, { RADIUS } from './Button-styles';
 
+import type { RippleButtonProps } from './Button-types';
+
 export default class Ripple extends PureComponent {
   static defaultProps = {
     ...TouchableWithoutFeedback.defaultProps,
@@ -16,21 +18,10 @@ export default class Ripple extends PureComponent {
     disabled: false,
   };
 
-  static propTypes = {
-    ...Animated.View.propTypes,
-    ...TouchableWithoutFeedback.propTypes,
-  };
-
-  constructor(props) {
-    super(props);
-    this.unique = 0;
-    this.mounted = false;
-
-    this.state = {
-      width: 0,
-      height: 0,
-      ripples: [],
-    };
+  state = {
+    width: 0,
+    height: 0,
+    ripples: [],
   }
 
   componentDidMount() {
@@ -58,18 +49,11 @@ export default class Ripple extends PureComponent {
     }
   }
 
-  props: {
-    rippleColor: string,
-    rippleOpacity: number,
-    rippleDuration: number,
-    rippleSize: number,
-    rippleContainerBorderRadius: number,
-    rippleCentered: bool,
-    rippleSequential: bool,
-    disabled: bool,
-    children: Object,
-    onPress: Function,
-  }
+  unique = 0;
+
+  mounted = false;
+
+  props: RippleButtonProps;
 
   startRipple(event) {
     const { rippleDuration, rippleCentered, rippleSize } = this.props;

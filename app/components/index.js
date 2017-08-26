@@ -1,11 +1,12 @@
-import Input from './Input/Input';
-import Button from './Button/Button';
-import RippleButton from './Button/RippleButton';
-import HomePageForm from './Form/HomePageForm';
+import Input from './Input';
+import HomePageForm from './Form';
+import { Button, RippleButton } from './Button';
+import Warning from './Text';
 
 export {
   Input,
   Button,
   RippleButton,
   HomePageForm,
+  Warning,
 };

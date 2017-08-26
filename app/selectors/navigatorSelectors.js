@@ -1,16 +1,23 @@
 import { createSelector } from 'reselect';
 import { loggedInSelector } from './userSelectors';
+import { gameSelector } from './gameSelectors';
 
-export const authenticatedNavigationSelector = state => state.navigator.authenticated;
-export const unauthenticatedNavigationSelector = state => state.navigator.unauthenticated;
+const authenticatedNavigationSelector = state => state.navigator.authenticated;
+const unauthenticatedNavigationSelector = state => state.navigator.unauthenticated;
 
 export default createSelector(
   authenticatedNavigationSelector,
   unauthenticatedNavigationSelector,
   loggedInSelector,
-  (authenticated, unauthenticated, loggedIn) => ({
+  gameSelector, (
     authenticated,
     unauthenticated,
     loggedIn,
+    game,
+  ) => ({
+    authenticated,
+    unauthenticated,
+    loggedIn,
+    game,
   }),
 );

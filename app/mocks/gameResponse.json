@@ -1,0 +1,84 @@
+{
+  "id": "597c4a08bd0cca2e0ecbd64d",
+  "name": "testing",
+  "players": [
+    {
+      "id": "591a8f6ebd0ccaed49e2b4bb",
+      "guid": "6980cee3-b1d7-8bfd-465e-2a2ae73a7da5",
+      "name": "Anonymous #470",
+      "offline": false
+    },
+    {
+      "id": "597c4a51bd0cca3d06728868",
+      "guid": "30536090-1210-ce7a-3f9d-ce0c06a920bd",
+      "name": "Anonymous #419",
+      "offline": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "597c4a1bbd0cca2e0e989522",
+      "name": "something easy",
+      "status": "flipped",
+      "votes": [
+        {
+          "player": {
+            "id": "591a8f6ebd0ccaed49e2b4bb",
+            "guid": "6980cee3-b1d7-8bfd-465e-2a2ae73a7da5",
+            "name": "Anonymous #470",
+            "offline": false
+          },
+          "value": "3"
+        },
+        {
+          "player": {
+            "id": "597c4a51bd0cca3d06728868",
+            "guid": "30536090-1210-ce7a-3f9d-ce0c06a920bd",
+            "name": "Anonymous #419",
+            "offline": false
+          },
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "597c4a22bd0cca3d067312fb",
+      "name": "something else",
+      "status": "new",
+      "votes": []
+    },
+    {
+      "id": "597c4a3bbd0cca3e06c8e23d",
+      "name": "not refreshing",
+      "status": "new",
+      "votes": []
+    },
+    {
+      "id": "597c4a65bd0cca3d06b12275",
+      "name": "another user",
+      "status": "flipped",
+      "votes": [
+        {
+          "player": {
+            "id": "591a8f6ebd0ccaed49e2b4bb",
+            "guid": "6980cee3-b1d7-8bfd-465e-2a2ae73a7da5",
+            "name": "Anonymous #470",
+            "offline": false
+          },
+          "value": "20"
+        },
+        {
+          "player": {
+            "id": "597c4a51bd0cca3d06728868",
+            "guid": "30536090-1210-ce7a-3f9d-ce0c06a920bd",
+            "name": "Anonymous #419",
+            "offline": false
+          },
+          "value": "3"
+        }
+      ]
+    }
+  ],
+  "current_task_id": "597c4a65bd0cca3d06b12275",
+  "status": "started"
+}
