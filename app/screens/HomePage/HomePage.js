@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Animated, Keyboard, KeyboardAvoidingView } from 'react-native';
+import { Animated, Keyboard, KeyboardAvoidingView, View } from 'react-native';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -79,6 +79,7 @@ class HomePage extends Component {
 
   handleSubmit = (validFormData) => {
     const { submitForm } = this.props;
+    Keyboard.dismiss();
     return submitForm(validFormData);
   }
 
@@ -100,7 +101,9 @@ class HomePage extends Component {
           onSubmit={this.handleSubmit}
         />
         {this.props.loginError &&
-          <Warning>Login error</Warning>
+          <View style={styles.loginError}>
+            <Warning>Login error</Warning>
+          </View>
         }
       </KeyboardAvoidingView>
     );

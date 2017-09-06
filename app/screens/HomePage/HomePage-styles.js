@@ -12,7 +12,6 @@ export default StyleSheet.create({
     backgroundColor: PGS_ORANGE,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     paddingLeft: SPACING_REGULAR,
     paddingRight: SPACING_REGULAR,
   },
@@ -25,7 +24,9 @@ export default StyleSheet.create({
     marginBottom: SPACING_SMALL,
   },
   formContainer: {
-    flex: 1,
     flexDirection: 'row',
+  },
+  loginError: {
+    marginTop: SPACING_SMALL,
   },
 });

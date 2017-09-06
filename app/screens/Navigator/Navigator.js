@@ -11,12 +11,10 @@ import type { NavigatorProps } from './Navigator-types';
 
 export const UserAuthenticated = StackNavigator({
   Game: { screen: GamePage } },
-  { headerMode: 'screen' },
 );
 
 export const UserUnauthenticated = StackNavigator({
   HomePage: { screen: HomePage } },
-  { headerMode: 'screen' },
 );
 
 const Navigator = ({
