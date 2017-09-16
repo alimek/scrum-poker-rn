@@ -32,6 +32,9 @@ const userReducer = createReducer(defaultState, {
     ...state,
     name: action.userName,
   }),
+  USER_LOGOUT: () => ({
+    ...defaultState,
+  }),
 });
 
 export default userReducer;

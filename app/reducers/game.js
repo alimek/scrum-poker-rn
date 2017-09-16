@@ -21,6 +21,9 @@ const gameLoginSucceeded = (state, action) => (
 
 const gameReducer = createReducer(defaultState, {
   GAME_LOGIN_SUCCEEDED: gameLoginSucceeded,
+  USER_LOGOUT: () => ({
+    ...defaultState,
+  }),
 });
 
 export default gameReducer;

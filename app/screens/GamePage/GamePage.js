@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { DrawerNavigator } from 'react-navigation';
-import { path } from 'ramda';
 
 import { Button } from '../../components';
 import styles from './GamePage-styles';
@@ -12,20 +11,9 @@ import GameDrawer from './Drawer';
 
 class GamePage extends Component {
 
-  static navigationOptions = {
-    header: ({ state }) => ({
-      title: path(['params', 'title'], state),
-    }),
-  };
-
-  componentDidMount() {
-    this.props.navigation.setParams({
-      title: this.props.screenProps.result.name,
-    });
-  }
-
   render() {
     const { navigation } = this.props;
+    console.log(this.props)
 
     return (
       <View style={styles.container}>
@@ -33,6 +21,11 @@ class GamePage extends Component {
           onPress={() => navigation.navigate('DrawerOpen')}
         >
           Open drawer
+        </Button>
+        <Button
+          onPress={() => navigation.dispatch({ type: 'USER_LOGOUT' })}
+        >
+          Logout
         </Button>
       </View>
     );

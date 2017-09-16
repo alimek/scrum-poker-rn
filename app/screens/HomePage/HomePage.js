@@ -23,12 +23,6 @@ const logo = require('../../assets/img/pgssoftware-logo-white-300px.png');
 
 class HomePage extends Component {
 
-  static navigationOptions = {
-    header: {
-      visible: false,
-    },
-  };
-
   componentWillMount() {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow);
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide);

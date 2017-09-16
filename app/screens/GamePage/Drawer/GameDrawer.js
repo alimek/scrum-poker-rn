@@ -9,12 +9,6 @@ import styles from './GameDrawer-styles';
 
 class GameDrawer extends Component {
 
-  static navigationOptions = {
-    header: {
-      visible: false,
-    },
-  };
-
   render() {
     const { tasks } = this.props;
     return (
