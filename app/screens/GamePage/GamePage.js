@@ -8,41 +8,39 @@ import { Button } from '../../components';
 import styles from './GamePage-styles';
 import type { GamePageProps } from './GamePage-types';
 
+import GameDrawer from './Drawer';
+
 class GamePage extends Component {
 
   static navigationOptions = {
     header: ({ state }) => ({
-      title: path(['params', 'screenProps', 'result', 'name'], state),
+      title: path(['params', 'title'], state),
     }),
   };
 
   componentDidMount() {
     this.props.navigation.setParams({
-      screenProps: this.props.screenProps,
+      title: this.props.screenProps.result.name,
     });
   }
 
   render() {
+    const { navigation } = this.props;
+
     return (
-      <View>
-        <Button onPress={() =>this.props.navigation.navigate('DrawerOpen')}
-        >Open drawer</Button>
+      <View style={styles.container}>
+        <Button
+          onPress={() => navigation.navigate('DrawerOpen')}
+        >
+          Open drawer
+        </Button>
       </View>
     );
   }
 }
 
-const DrawerItems = (props) => {
-  console.log(props)
-  return (
-    <Text>
-      drawer
-    </Text>
-  );
-};
-
 export default DrawerNavigator({
   Main: { screen: GamePage },
 }, {
-  contentComponent: props => <ScrollView><DrawerItems {...props} /></ScrollView>,
+  contentComponent: props => <ScrollView><GameDrawer {...props} /></ScrollView>,
 });
