@@ -9,7 +9,6 @@ export default StyleSheet.create({
     backgroundColor: 'transparent',
     overflow: 'hidden',
   },
-
   ripple: {
     width: RADIUS * 2,
     height: RADIUS * 2,
@@ -17,14 +16,9 @@ export default StyleSheet.create({
     overflow: 'hidden',
     position: 'absolute',
   },
-
-  base: {
-    backgroundColor: 'red',
-  },
   disabled: {
     backgroundColor: BRAND_PRIMARY_DISABLED,
   },
-
   text: {
     color: PGS_ORANGE,
     fontSize: FONT_BIG,

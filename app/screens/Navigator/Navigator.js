@@ -1,12 +1,12 @@
 // @flow
 import React from 'react';
-import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { StackNavigator, addNavigationHelpers } from 'react-navigation';
 import { path } from 'ramda';
 
 import HomePage from '../HomePage/HomePage';
 import GamePage from '../GamePage/GamePage';
+import { DrawerOpen } from '../GamePage/Drawer';
 import navigatorSelector from '../../selectors/navigatorSelectors';
 
 import type { NavigatorProps } from './Navigator-types';
@@ -14,9 +14,9 @@ import type { NavigatorProps } from './Navigator-types';
 export const UserAuthenticated = StackNavigator({
   Game: {
     screen: GamePage,
-    navigationOptions: ({ screenProps }) => ({
-      title: path(['result', 'name'], screenProps),
-      headerRight: <Text>Replace with open icon</Text>,
+    navigationOptions: ({ screenProps, navigation }) => ({
+      title: path(['gameName'], screenProps),
+      headerLeft: <DrawerOpen navigation={navigation} />,
     }),
   },
 });
@@ -33,7 +33,7 @@ const Navigator = ({
   authenticated,
   unauthenticated,
   loggedIn,
-  game,
+  gameName,
 }: NavigatorProps) => (
   loggedIn ?
     <UserAuthenticated
@@ -41,7 +41,7 @@ const Navigator = ({
         dispatch,
         state: authenticated,
       })}
-      screenProps={game}
+      screenProps={{ gameName }}
     /> :
     <UserUnauthenticated
       navigation={addNavigationHelpers({

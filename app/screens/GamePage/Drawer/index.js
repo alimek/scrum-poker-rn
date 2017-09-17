@@ -1,1 +1,5 @@
-export { default as default } from './GameDrawer';
+import GameDrawer from './GameDrawer';
+import DrawerOpen from './DrawerOpen';
+
+export { DrawerOpen };
+export default GameDrawer;

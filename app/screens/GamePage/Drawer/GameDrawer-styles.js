@@ -13,4 +13,7 @@ export default StyleSheet.create({
     paddingLeft: 10,
     alignSelf: 'center',
   },
+  DrawerOpen: {
+    paddingLeft: 20,
+  },
 });

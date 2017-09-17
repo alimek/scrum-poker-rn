@@ -4,5 +4,5 @@ export type NavigatorProps = {
   unauthenticated: Object,
   authenticated: Object,
   loggedIn: Boolean,
-  game: Object,
+  gameName: string,
 }
