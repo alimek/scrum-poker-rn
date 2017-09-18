@@ -34,12 +34,7 @@ const HomePageForm = ({
           val => (val && val.length >= 3 ? undefined : 'User name must be at least 3 characters long'),
         ]}
       />
-      <RippleButton
-        onPress={handleSubmit(onSubmit)}
-        style={styles.buttonContainer}
-      >
-        Enter
-      </RippleButton>
+      <RippleButton onPress={handleSubmit(onSubmit)}>Enter</RippleButton>
     </View>
   </View>;
 

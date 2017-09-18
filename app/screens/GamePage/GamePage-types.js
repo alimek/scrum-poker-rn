@@ -1,5 +1,8 @@
 // @flow
-import type { Game } from '../../types/game';
-import type { Connect } from '../../types/connect';
+import type { Navigation } from '../../types/navigation';
 
-export type GamePageProps = Game & Connect;
+type GamePage = {
+  userName: string,
+};
+
+export type GamePageProps = Navigation & GamePage;
