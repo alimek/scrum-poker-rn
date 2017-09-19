@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -14,9 +14,14 @@ class GameDrawer extends Component {
     return (
       <View>
         {tasks.map(task =>
-          <View style={styles.textOuter} key={task}>
-            <Text style={styles.text}>{task}</Text>
-          </View>,
+          <TouchableWithoutFeedback
+            key={task}
+            onPress={() => console.log('handle click')}
+          >
+            <View style={styles.textOuter}>
+              <Text style={styles.text}>{task}</Text>
+            </View>
+          </TouchableWithoutFeedback>,
         )}
       </View>
     );

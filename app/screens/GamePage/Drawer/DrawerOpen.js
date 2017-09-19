@@ -1,15 +1,17 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { Button } from '../../../components';
 import styles from './GameDrawer-styles';
+import type { Navigation } from '../../../types/navigation';
 
-const DrawerOpen = ({ navigation }) => (
+const DrawerOpen = ({ navigation }: Navigation) => (
   <View style={styles.DrawerOpen}>
-    <Button onPress={() => navigation.navigate('DrawerOpen')}>
+    <TouchableWithoutFeedback
+      onPress={() => navigation.navigate('DrawerOpen')}
+    >
       <Icon name="list" size={30} color="#000" />
-    </Button>
+    </TouchableWithoutFeedback>
   </View>
 );
 
