@@ -4,7 +4,8 @@ import { Animated, Keyboard, KeyboardAvoidingView, View } from 'react-native';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { HomePageForm, Warning } from '../../components';
+import HomePageForm from './Form';
+import { Warning } from '../../components';
 import { createTiming } from '../../utils/animations';
 import { gameEnter } from '../../actions/game';
 import { hasLoginErrorSelector } from '../../selectors/userSelectors';

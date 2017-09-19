@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { SPACING_REGULAR } from '../../styles/common';
+import { SPACING_REGULAR } from '../../../styles/common';
 
 export default StyleSheet.create({
   formInner: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { View } from 'react-native';
-import { Input, RippleButton } from '../';
+import { Input, RippleButton } from '../../../components';
 
 import styles from './HomePageForm-styles';
 
