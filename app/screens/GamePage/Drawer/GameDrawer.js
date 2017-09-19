@@ -6,8 +6,11 @@ import { createSelector } from 'reselect';
 import { gameTasksSelector } from '../../../selectors/gameSelectors';
 
 import styles from './GameDrawer-styles';
+import type { GameDrawerProps } from './GameDrawer-types';
 
 class GameDrawer extends Component {
+
+  props: GameDrawerProps;
 
   render() {
     const { tasks } = this.props;
