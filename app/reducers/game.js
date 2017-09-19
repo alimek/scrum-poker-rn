@@ -3,15 +3,12 @@ import { normalize } from 'normalizr';
 import { gameSchema } from './schemas';
 import createReducer from './reducer-utils';
 
+import { game } from '../types/game';
+
 const defaultState = {
   entities: {},
   result: {
-    id: null,
-    name: null,
-    status: null,
-    current_task_id: null,
-    tasks: [],
-    players: [],
+    ...game,
   },
 };
 

@@ -1,8 +1,6 @@
 // @flow
 
-import { cloneObject } from '../utils/flow';
-
-export const defaultUserState = {
+export type User = {
   guid: null,
   name: null,
   pickedCard: null,
@@ -12,4 +10,12 @@ export const defaultUserState = {
   hasLoginError: false,
 };
 
-export const userState = cloneObject(defaultUserState);
+export const user = {
+  guid: null,
+  name: null,
+  pickedCard: null,
+  isReady: false,
+  isOffline: false,
+  loggedIn: false,
+  hasLoginError: false,
+};

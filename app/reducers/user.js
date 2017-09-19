@@ -1,14 +1,10 @@
 // @flow
 import createReducer from './reducer-utils';
 
+import { user } from '../types/user';
+
 const defaultState = {
-  guid: null,
-  name: null,
-  pickedCard: null,
-  isReady: false,
-  isOffline: false,
-  loggedIn: false,
-  hasLoginError: false,
+  ...user,
 };
 
 const userReducer = createReducer(defaultState, {

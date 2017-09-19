@@ -20,8 +20,6 @@ import { SPACING_REGULAR, SPACING_BIG } from '../../styles/common';
 
 import type { HomePageProps } from './HomePage-types';
 
-const logo = require('../../assets/img/pgssoftware-logo-white-300px.png');
-
 class HomePage extends Component {
 
   componentWillMount() {
@@ -83,7 +81,10 @@ class HomePage extends Component {
       <KeyboardAvoidingView
         style={styles.container}
       >
-        <Animated.Image source={logo} style={[styles.logo, { height: this.imageHeight }]} />
+        <Animated.Image
+          source={require('../../assets/img/pgssoftware-logo-white-300px.png')}
+          style={[styles.logo, { height: this.imageHeight }]}
+        />
 
         <Animated.Text
           style={[styles.text, { fontSize: this.textSize, marginTop: this.textMargin }]}

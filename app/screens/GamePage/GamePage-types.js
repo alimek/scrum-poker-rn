@@ -1,8 +1,7 @@
 // @flow
 import type { Navigation } from '../../types/navigation';
 
-type GamePage = {
+export type GamePageProps = {
+  navigation: Navigation,
   userName: string,
 };
-
-export type GamePageProps = Navigation & GamePage;

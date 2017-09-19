@@ -8,3 +8,12 @@ export type Game = {
   tasks: Array<string>,
   players: Array<string>,
 };
+
+export const game = {
+  id: null,
+  name: null,
+  status: null,
+  current_task_id: null,
+  tasks: [],
+  players: [],
+};

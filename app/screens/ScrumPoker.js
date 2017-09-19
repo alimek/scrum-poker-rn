@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import Navigator from './Navigator/Navigator';
 import configureStore from '../store';
 
-const store = configureStore();
+const store = configureStore({});
 
 const ScrumPoker = () => (
   <Provider store={store}>
