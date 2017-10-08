@@ -1,6 +1,6 @@
 // @flow
 import { combineReducers } from 'redux';
-import { UserAuthenticated, UserUnauthenticated } from '../screens/Navigator/Navigator';
+import { UserAuthenticated, UserUnauthenticated } from '../screens/Navigator/App';
 
 const authenticated = (state: Object, action: Function) => {
   const newState = UserAuthenticated.router.getStateForAction(action, state);

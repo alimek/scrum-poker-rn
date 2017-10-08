@@ -1,5 +1,1 @@
-import RippleButton from './ButtonRipple';
-
-export {
-  RippleButton,
-};
+export { default as default } from './Button';

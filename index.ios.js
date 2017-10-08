@@ -1,7 +1,6 @@
-/** @flow */
-
+// @flow
 import { AppRegistry } from 'react-native';
 
-import ScrumPoker from './app/screens/ScrumPoker';
+import App from './app';
 
-AppRegistry.registerComponent('ScrumPoker', () => ScrumPoker);
+AppRegistry.registerComponent('PlanningPoker', () => App);

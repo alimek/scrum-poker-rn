@@ -10,7 +10,6 @@ import type { InputProps } from './Input-types';
  * to be wrapped with redux-form Field component
 */
 class Input extends Component {
-
   componentWillReceiveProps(nextProps: InputProps) {
     const { active } = nextProps.meta;
     const { value } = nextProps.input;
@@ -63,7 +62,7 @@ class Input extends Component {
           {
             translateX: this.textAnimation.interpolate({
               inputRange: [0, 1],
-              outputRange: [5, -10],
+              outputRange: [5, -12],
             }),
           },
           {

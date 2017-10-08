@@ -10,7 +10,6 @@ export const SPACING_SMALL = 10;
 export const SPACING_REGULAR = 15;
 export const SPACING_BIG = 30;
 
-
 // font sizes
 export const FONT_SMALL = 12;
 export const FONT_REGULAR = 18;

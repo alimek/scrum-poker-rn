@@ -1,9 +1,9 @@
+import Button from './Button';
 import Input from './Input';
-import { RippleButton } from './Button';
-import Warning from './Text';
+import HeaderIcon from './HeaderIcon';
 
 export {
+  Button,
   Input,
-  RippleButton,
-  Warning,
+  HeaderIcon,
 };

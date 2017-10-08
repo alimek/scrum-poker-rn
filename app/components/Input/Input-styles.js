@@ -1,3 +1,4 @@
+// @flow
 import { StyleSheet } from 'react-native';
 
 import { PGS_ORANGE_LIGHT, GRAY_LIGHT, FONT_REGULAR } from '../../styles/common';
@@ -6,6 +7,7 @@ export default StyleSheet.create({
   inputContainer: {
     position: 'relative',
     height: 50,
+    marginTop: 5,
     marginBottom: 5,
   },
   placeholder: {
