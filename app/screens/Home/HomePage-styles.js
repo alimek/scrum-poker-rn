@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { PGS_ORANGE, SPACING_REGULAR } from '../../styles/common';
 
 const window = Dimensions.get('window');
-export const IMAGE_HEIGHT = window.width / 2;
+const IMAGE_HEIGHT = window.width / 2;
 
 export default StyleSheet.create({
   container: {

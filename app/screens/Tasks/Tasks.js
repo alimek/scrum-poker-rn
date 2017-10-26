@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { HeaderIcon } from '../../components';
 import TasksSelector from './TasksSelector';
+import { taskSetActive } from '../../actions/task';
 
 const IconLeft = ({ type }: string) => {
   switch (type) {
@@ -38,16 +39,18 @@ const IconLeft = ({ type }: string) => {
 };
 
 const Tasks = ({ tasks, navigation }) => (
-  <List>{map(task => (
-    <ListItem
-      key={task.id}
-      title={task.name}
-      subtitle={task.status}
-      leftIcon={<IconLeft type={task.status} />}
-      hideChevron
-      onPress={() => navigation.navigate('TaskDetails')}
-    />),
-  tasks)}</List>
+  <List>
+    {map(task => (
+      <ListItem
+        key={task.id}
+        title={task.name}
+        subtitle={task.status}
+        leftIcon={<IconLeft type={task.status} />}
+        hideChevron
+        onPress={() => navigation.dispatch(taskSetActive(task.id))}
+      />), tasks)
+    }
+  </List>
 );
 
 export default StackNavigator({
