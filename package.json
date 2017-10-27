@@ -19,7 +19,8 @@
 		"redux": "^3.7.2",
 		"redux-form": "^7.0.4",
 		"redux-saga": "^0.15.6",
-		"reselect": "^3.0.1"
+		"reselect": "^3.0.1",
+		"uuid": "^3.1.0"
 	},
 	"devDependencies": {
 		"babel-eslint": "^8.0.1",

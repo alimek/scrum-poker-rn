@@ -13,7 +13,6 @@ export function* handleGameLogin(action) {
     const { gameId, userName } = action.payload;
     const response = yield call(pokerApi.get, `/games/${gameId}`);
     if (response.status === 200) {
-      console.log(response.data)
       yield put({ type: GAME_LOGIN_SUCCEEDED, payload: response.data });
       yield put({ type: USER_SET_LOGIN, userName });
     } else {
