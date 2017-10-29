@@ -10,6 +10,7 @@
 		"axios": "^0.16.2",
 		"normalizr": "^3.2.3",
 		"ramda": "^0.24.1",
+		"ramda-fantasy": "^0.8.0",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.48.4",
 		"react-native-elements": "^0.17.0",

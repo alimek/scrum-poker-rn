@@ -9,18 +9,6 @@ import taskDetailsSelector from './TaskDetailsSelector';
 import type { Game } from '../../types/game';
 
 class TaskDetails extends Component {
-  // static navigationOptions = ({ navigation }) => {
-  //   return {
-  //     title: path(['state', 'params', 'title'], navigation),
-  //   }
-  // }
-
-  // componentWillMount() {
-  //   this.props.navigation.setParams({
-  //     title: path(['task', 'name'], this.props),
-  //   });
-  // }
-
   render() {
     console.log(this.props)
     return (
@@ -33,8 +21,8 @@ class TaskDetails extends Component {
 }
 
 // The only way to have header title based on store
-const Title = ({ task }: Game) => (
-  <Text>{path(['name'], task)}</Text>
+const Title = ({ name }: string) => (
+  <Text>{name}</Text>
 );
 const TaskTitle = connect(taskDetailsSelector)(Title);
 
