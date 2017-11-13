@@ -10,7 +10,12 @@ import styles from './HomePage-styles';
 import logo from '../../assets/img/pgssoftware-logo-white-300px.png';
 import { hasLoginErrorSelector } from '../../selectors/userSelectors';
 
-import type { HomePageProps } from './HomePage-types';
+// import type { HomePageProps } from './HomePage-types';
+
+type HomePageProps = {
+  loginError: string,
+  submitForm: Function,
+}
 
 class HomePage extends Component {
   props: HomePageProps;

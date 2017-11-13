@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
-import { path } from 'ramda';
 
 import { Card } from '../../components';
+import TaskTitle from './TaskTitle';
 import taskDetailsSelector from './TaskDetailsSelector';
 import type { Game } from '../../types/game';
 
@@ -19,12 +19,6 @@ class TaskDetails extends Component {
     );
   }
 }
-
-// The only way to have header title based on store
-const Title = ({ name }: string) => (
-  <Text>{name}</Text>
-);
-const TaskTitle = connect(taskDetailsSelector)(Title);
 
 export default StackNavigator({
   TaskDetails: {
