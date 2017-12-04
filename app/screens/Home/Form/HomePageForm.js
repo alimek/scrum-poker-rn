@@ -15,23 +15,9 @@ const HomePageForm = ({
   invalid: Boolean,
 }) => (
   <View>
-    <Field
-      name={'gameId'}
-      component={Input}
-      placeholder={'Game ID'}
-      validate={[required]}
-    />
-    <Field
-      name={'userName'}
-      component={Input}
-      placeholder={'User Name'}
-      validate={[required]}
-    />
-    <Button
-      title="ENTER"
-      onPress={handleSubmit(onSubmit)}
-      disabled={invalid}
-    />
+    <Field name="gameId" component={Input} placeholder="Game ID" validate={[required]} />
+    <Field name="userName" component={Input} placeholder="User Name" validate={[required]} />
+    <Button raised title="ENTER" onPress={handleSubmit(onSubmit)} disabled={invalid} />
   </View>
 );
 

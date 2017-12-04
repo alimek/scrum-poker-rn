@@ -2,6 +2,7 @@
 
 export type Game = {
   id: string,
+  gameId: string,
   name: string,
   status: string,
   current_task_id: string,
@@ -10,6 +11,7 @@ export type Game = {
 };
 
 export const game = {
+  gameId: '597c4a08bd0cca2e0ecbd64d',
   id: null,
   name: null,
   status: null,
