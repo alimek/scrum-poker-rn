@@ -20,8 +20,6 @@ type HomePageProps = {
 };
 
 class HomePage extends Component<HomePageProps> {
-  // props: HomePageProps;
-
   handleSubmit = (validFormData) => {
     const { submitForm } = this.props;
 
