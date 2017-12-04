@@ -20,5 +20,8 @@ export default StyleSheet.create({
   formContainer: {
     alignSelf: 'stretch',
   },
+  errorContainer: {
+    textAlign: 'center',
+    paddingTop: 10,
+  },
 });
-
